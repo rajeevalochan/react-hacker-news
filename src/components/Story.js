@@ -16,17 +16,20 @@ export const Story = ({ storyId }) => {
   }, []);
 
   return (
-    <StoryWrapper data-testid="story">
+    <>
+    {story.url ?<StoryWrapper data-testid="story">
       <StoryTitle>
         <a href={story.url}>{story.url}</a>
       </StoryTitle>
       <Storymeta>
         <span className="story-by" data-testid="story-by">
-          <StoryMetaElement>{story.by}</StoryMetaElement>
+          <StoryMetaElement>By: </StoryMetaElement>{story.by}
+        </span>
+        <span className="story-time" data-testid="story-time">
+          <StoryMetaElement>Posted: </StoryMetaElement>{ story.time}
         </span>
       </Storymeta>
-      By: <p></p>
-      Posted: <p>{story.time}</p>
-    </StoryWrapper>
+    </StoryWrapper> : null}
+    </>
   );
 };
